@@ -26,10 +26,10 @@ Somos estudiantes de cuarto año de Ingeniería Informática en la Universidad C
 
 El equipo está compuesto por:  
 
-* ### [Andrés Herranz González](https://github.com/AndresHG) ###
-* ### [Borja Lorenzo Fernández](https://github.com/borjalor) ###
-* ### [Diego Mestre Vidal](https://github.com/voar) ###
-* ### [Guillermo Rius García](https://github.com/GuilleRius) ###
+* ##### [Andrés Herranz González](https://github.com/AndresHG) #####
+* ##### [Borja Lorenzo Fernández](https://github.com/borjalor) #####
+* ##### [Diego Mestre Vidal](https://github.com/voar) #####
+* ##### [Guillermo Rius García](https://github.com/GuilleRius) #####
 
  
  
