@@ -41,7 +41,7 @@
 
         <Switch
             android:id="@+id/switch1"
-            android:layout_width="400px"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Switch"
@@ -49,7 +49,7 @@
             />
         <Switch
             android:id="@+id/switch2"
-            android:layout_width="400px"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Switch"
@@ -57,7 +57,7 @@
             />
         <Switch
             android:id="@+id/switch3"
-            android:layout_width="400px"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Switch"
@@ -69,15 +69,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingRight="10px"
-        android:paddingTop="20px"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
         android:gravity="center_horizontal">
 
         <Button
             android:id="@+id/startstop"
             android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:text="Start/Stop" />
+            android:text="Start/Stop"
+            android:onClick="startstopButton"/>
 
     </LinearLayout>
 
@@ -96,6 +97,4 @@
             android:text="" />
 
     </ScrollView>
-
-
 </LinearLayout>

@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity
     TextView consola;
     String log;
     Boolean ok;
+    LogTask logTask;
 
 
     @Override
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //consola = (TextView) findViewById(R.id.log);
+        consola = (TextView) findViewById(R.id.log);
         log = "";
         ok = false;
 
@@ -54,6 +55,18 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+
+    public void startstopButton(View vista) {
+        if (!ok) ok = true;
+        else ok = false;
+
+        if (ok) {
+            logTask = new LogTask(this,consola,log);
+            logTask.execute();
+        } else logTask.cancel(true);
+
+
+    }
 
 
     @Override
@@ -73,20 +86,20 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -94,7 +107,11 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_aboutthis) {
+        if (id == R.id.nav_warning) {
+            // Handle the camera action
+        } else if (id == R.id.nav_logs) {
+
+        } else if (id == R.id.nav_aboutthis) {
 
         } else if (id == R.id.nav_aboutthis) {
 
@@ -110,7 +127,30 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    static public String RunCommand(String[] cmd) {
+        StringBuffer cmdOut = new StringBuffer();
+        Process process;
+        try {
+            process = Runtime.getRuntime().exec(cmd);
+            InputStreamReader r = new InputStreamReader(process.getInputStream());
+            BufferedReader bufReader = new BufferedReader(r);
+            char[] buf = new char[4096];
+            int nRead = 0;
+            while ((nRead = bufReader.read(buf)) > 0) {
+                cmdOut.append(buf, 0, nRead);
+            }
+            bufReader.close();
+            try {
+                process.waitFor();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        return cmdOut.toString();
+    }
 
 }
 

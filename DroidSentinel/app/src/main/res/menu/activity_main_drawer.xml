@@ -3,17 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <!--<group android:checkableBehavior="single">-->
-        <!--<item-->
-            <!--android:id="@+id/nav_warning"-->
-            <!--android:icon="@drawable/ic_warning_black"-->
-            <!--android:title="Adevertencias" />-->
-        <!--<item-->
-            <!--android:id="@+id/nav_logs"-->
-            <!--android:icon="@drawable/ic_personal_log_black"-->
-            <!--android:title="Logs" />-->
-    <!--</group>-->
-
     <item android:title="About">
         <menu>
             <item

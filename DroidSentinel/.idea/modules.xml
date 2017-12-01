@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://C:\Users\kentor\Documents\GitHub\DroidSentinel\DroidSentinel_Android\Android studio.iml" filepath="C:\Users\kentor\Documents\GitHub\DroidSentinel\DroidSentinel_Android\Android studio.iml" />
       <module fileurl="file://$PROJECT_DIR$/DroidSentinel.iml" filepath="$PROJECT_DIR$/DroidSentinel.iml" />
+      <module fileurl="file://C:\Users\blorenzo\Desktop\DroidSentinel-master\DroidSentinel_Android\DroidSentinel_Android.iml" filepath="C:\Users\blorenzo\Desktop\DroidSentinel-master\DroidSentinel_Android\DroidSentinel_Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
