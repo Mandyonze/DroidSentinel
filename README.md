@@ -1,15 +1,15 @@
 
 
-# Return 0 - DroidSentinel
+# Return0 - DroidSentinel
 
 ![DroidSentinel Logo](/DroidSentinel_Logo.png)
 
 DroidSentinel es una aplicación desarrollada durante el Hackathon celebrado en Santander en el evento [Cybercamp](https://cybercamp.es/competiciones/hackathon) en el año 2017. A líneas generales, Droidsentinel es un analizador de tráfico para dispositivos Android potencialmente comprometidos como parte de una botnet orientado a detectar ataques DDoS.
 
-## Índice
+## Contenidos
 
 - [Sobre DroidSentinel](#sobre-droidsentinel)
-- [Ataques de DDos](#ataques-de-denegación-de-servicio)
+- [Ataques de DDoS](#ataques-de-denegación-de-servicio)
 - [Sobre Nosotros](#sobre-nosotros)
 
 ##  Sobre DroidSentinel
@@ -28,7 +28,7 @@ El equipo está compuesto por:
 
 * ##### [Andrés Herranz González](https://github.com/AndresHG) #####
 * ##### [Borja Lorenzo Fernández](https://github.com/borjalor) #####
-* ##### [Diego Mestre Vidal](https://github.com/voar) #####
+* ##### [Diego Maestre Vidal](https://github.com/voar) #####
 * ##### [Guillermo Rius García](https://github.com/GuilleRius) #####
 
  
