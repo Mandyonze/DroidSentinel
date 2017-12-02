@@ -39,7 +39,7 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
     private static List<Double> FORECASTED;
     private static int WINDOW_LEN;
     private static final int MAXTS = 52;
-    private static final int READYFORECAST = 50;
+    private static final int READYFORECAST = 20;
     private static LogAgent agent;
 
     private TextView consola;
@@ -162,7 +162,7 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
             try {
                 val = forecastNext();
 //                publishProgress("" + val + "\n");
-                publishProgress("Estoy dando vueltas, espera" + cont + "\n");
+                publishProgress("Analizando datos (" + cont + ")...\n");
                 cont ++;
                 t.interrupt();
                 crearTcpdump();
@@ -194,7 +194,6 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
     Para ello, ejecuta los privilegios de superusuario y le da permisos al tcpdump.
     Tras iniciar el tcpdump, lo guardamos en la tarjeta SD con el nombre definido en RUTA*/
     public Boolean crearTcpdump(){
-        publishProgress("Se ha creado el archivo"+ NAME_LOG + "" + this.RUTA + "\n");
 
         try {
             Runtime.getRuntime().exec(new String[]{"su", "-c", "chmod 777 /system/bin/tcpdump"});
@@ -204,7 +203,7 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
         t = new Thread(new Runnable() {
             @Override
             public void run() {
-                RunCommand(new String[]{"su", "-c", "/system/bin/tcpdump -n -tt -i any > /sdcard/tcpdump.log"});
+                RunCommand(new String[]{"su", "-c", "/system/bin/tcpdump -n -tt -i any >> /sdcard/tcpdump.log"});
             }
 
         });
@@ -315,6 +314,7 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
             if(FORECASTED.get(0) != -1){
                 if(Math.abs(FORECASTED.get(0) - new_value) > (double)THRESHOLD /100){
                     System.out.println("Abnormal activity");
+                    publishProgress("Abnormal Activity");
                 }
             }
 //            List<Double> new_list = ts;
