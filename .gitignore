@@ -1,0 +1,10 @@
+*.iml
+/DroidSentinel/.gradle
+/DroidSentinel/local.properties
+/DroidSentinel/.idea/workspace.xml
+/DroidSentinel/.idea/libraries
+/DroidSentinel/.DS_Store
+/DroidSentinel/build
+/DroidSentinel/captures
+/DroidSentinel/.externalNativeBuild
+.DS_Store
