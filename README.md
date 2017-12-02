@@ -10,6 +10,8 @@ DroidSentinel es una aplicación desarrollada durante el Hackathon celebrado en 
 
 - [Sobre DroidSentinel](#sobre-droidsentinel)
 - [Ataques de DDoS](#ataques-de-denegación-de-servicio)
+- [Requisitos](#requisitos)
+- [Instalación](#requisitos)
 - [Sobre Nosotros](#sobre-nosotros)
 
 ##  Sobre DroidSentinel
@@ -19,6 +21,36 @@ DroidSentinel es una aplicación sencilla diseñada para Android está destinada
 ##  Ataques de Denegación de Servicio
 
 En primer lugar, DroidSentinel tiene como motivación principal el aumento de los ataques de Denegación de Servicio Distribuidos, **¿Qué es un ataque DDoS?** Es un ataque a un sistema de computadoras o red que causa que un servicio o recurso sea inaccesible a los usuarios legítimos. Normalmente provoca la pérdida de la conectividad con la red por el consumo del ancho de banda de la red de la víctima o sobrecarga de los recursos computacionales del sistema atacado. 
+
+## Requisitos
+Para poder iniciar nuestra aplicación se necesitan los siguientes programas:
+
+* AndroidStudio 
+
+  Android Studio es el entorno de desarrollo integrado oficial para la plataforma Android y utilizado por nuestro proyecto.
+
+* NOX Emulator 
+
+  Emulador utilizado para la ejecución de nuestra aplicación
+
+* TCPDUMP 
+
+  Tcpdump necesario para el análisis y sniffing de paquetes. Tcpdump es necesario instalarlo en nuestro emulador para que se cree el       archivo con la información de los paquetes.
+
+## Instalación
+
+Para llevar a cabo la ejecución de nuestra aplicación, es necesario cargar el proyecto en el entorno de trabajo Android Studio.
+También es necesario el emulador Nox en la que descargaremos la terminal o consola, que es una aplicación que te permite, mediante órdenes escritas realizar todo tipo de operaciones.
+La terminal es necesaria para poder instalar el tcpdump para el sniffing de paquetes.
+
+Para poder instalar tcpdump en nuestro emulador, debemos ejecutar los siguientes comandos en la terminal:
+ 
+ Adjuntamos el link de los distintos elementos necesarios para la instalación y ejecución de nuestra aplicación:
+ 
+ * ##### [Descargar Android Studio](https://developer.android.com/studio/index.html?hl=es-419) #####
+ * ##### [Descargar Nox Emulator](https://es.bignox.com/) #####
+ * ##### [Configuración Tcpdump](https://josetrochecoder.wordpress.com/2013/11/04/installing-tcpdump-for-android/) #####
+ 
 
 ##  Sobre Nosotros
 

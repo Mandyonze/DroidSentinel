@@ -46,7 +46,9 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
     private Context contexto;
     private Thread t;
 
+    //archivo en el que guardamos los paquetes analizados
     public final static String NAME_LOG = "tcpdump.log";
+    //Ruta donde guardamos el archivo
     public final static String RUTA = "/sdcard/tcpdump.log";
 
     public LogTask(Context contexto, TextView consola, String log) {
@@ -100,7 +102,8 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
         consola.setText(stop());
     }
 
-
+/* Método que muestra notificaciones al usuario tras ejecutar el programa y haver analizado y predicho los
+    distintos poquetes salientes*/
     public void showNotification(){
         NotificationCompat.Builder mBuilder;
         NotificationManager mNotifyMgr =(NotificationManager) contexto.getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
@@ -121,6 +124,10 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
 
 //--------------------------------------------------------------------------------------------------------------------------------------
 
+    /* Método que inicia el programa, mediante la que iniciamos nuestro software para al análisis de paquetes que es el  tcpdump.
+        Tcpdump es una herramienta para línea de comandos cuya utilidad principal es analizar el tráfico que circula por la red.
+        Permite al usuario capturar y mostrar en tiempo real los paquetes transmitidos y recibidos por la red a la cual el ordenador 
+        está conectado*/
     public String start(){
         publishProgress("Se ha creado el archivo"+ NAME_LOG + "" + this.RUTA + "\n");
         crearTcpdump();
@@ -168,6 +175,8 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
         return "The application it's already begun!\n";
     }
 
+    /* Método que para el programa y que borra la ruta del del archivos.
+    Para ello le damos permisos de superusuario ya que sino el borrado no se produce porque no tiene suficientes privilegios */
     public String stop(){
 
         t.interrupt();
@@ -180,6 +189,9 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
         return "The application was stopped!";
     }
 
+    /* Crea el tcpdump y muestra al usuario la carpeta donde se ha guardado el archivo.
+    Para ello, ejecuta los privilegios de superusuario y le da permisos al tcpdump.
+    Tras iniciar el tcpdump, lo guardamos en la tarjeta SD con el nombre definido en RUTA*/
     public Boolean crearTcpdump(){
         publishProgress("Se ha creado el archivo"+ NAME_LOG + "" + this.RUTA + "\n");
 
@@ -200,6 +212,8 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
         return true;
     }
 
+    /* Lee el archivo NAME_LOG de la tarjeta SD.
+       Para que no se sature el dispositivo, vamos borrando distintos datos.*/
     public Boolean leerArchivo(){
 
         String text = "";
@@ -238,6 +252,7 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
         return true;
     }
 
+    /* Método que utilizamos para poder utilizar los distintos comandos de Linux de nuestro dispositivos mediante la terminal. */
     String RunCommand(String[] cmd) {
         StringBuffer cmdOut = new StringBuffer();
         Process process;
