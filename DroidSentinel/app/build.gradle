@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -26,4 +30,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    compile group: 'com.github.jrachiele', name: 'timeseries', version:'0.3'
+    compile group: 'com.github.jrachiele', name: 'math', version:'0.3'
+    compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
+    compile 'com.google.guava:guava:23.3-android'
 }
