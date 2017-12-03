@@ -13,6 +13,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Algoritmo que trae un nivel adicional de suavizado a la línea de base de pronóstico.
+ * Este artículo sigue la descripción publicada por  E.S. Gardner,
+ * en el paper "Exponential smoothing: The state of the art—Part II",
+ * publicado en la revista International Journal of Forecasting, Vol. 22, Issue 4, pp. 637-666, December 2006
+ */
 
 public class DoubleExpSmoothing {
     public static List<Double> forecast(List<Double> data, double alpha, double gamma, int initializationMethod, int numForecasts, boolean debug) {
