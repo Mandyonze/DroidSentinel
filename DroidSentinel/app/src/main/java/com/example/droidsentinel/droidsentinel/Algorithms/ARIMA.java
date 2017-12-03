@@ -11,8 +11,10 @@ import timeseries.models.arima.*;
 import timeseries.models.arima.Arima;
 
 /**
- * La clae ARIMA instancia una predicción completa para una TS a partir de unos parámetros P,D,Q
- * @author mandyonze
+ * La clae ARIMA instancia una predicción completa para una TS a partir de los parámetros de ajuste P,D,Q
+ * Este artículo sigue la descripción publicada por S.C. Hillmer, G.C. Tiao,
+ * en el paper  "An ARIMA-Model-Based Approach to Seasonal Adjustment",
+ * publicado en la revista Journal of the American Statistical Association, Vol. 77, Issue 377, pp. 63-70, Ocober 1980
  */
 public class ARIMA {
     private int p; //Number of autoregressive terms.
