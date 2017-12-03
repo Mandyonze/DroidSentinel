@@ -8,3 +8,4 @@
 /DroidSentinel/captures
 /DroidSentinel/.externalNativeBuild
 .DS_Store
+/DroidSentinel/app/build/*

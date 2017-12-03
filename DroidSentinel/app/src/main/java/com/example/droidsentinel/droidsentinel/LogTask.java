@@ -42,6 +42,9 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
     private static final int READYFORECAST = 20;
     private static LogAgent agent;
 
+
+
+
     private TextView consola;
     private String log;
     private Context contexto;

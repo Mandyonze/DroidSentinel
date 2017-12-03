@@ -24,6 +24,9 @@ public class LogAgent {
     //    private static HashMap<String, Double> petitions;
     private static double firstTime;
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSSSSSS");
+    
+
+
 
 //    private static final String LOG_FILE
 //            = Paths.get(Paths.get("").toAbsolutePath().toString(),
