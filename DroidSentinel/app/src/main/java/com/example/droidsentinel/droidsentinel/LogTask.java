@@ -44,12 +44,11 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
     private int READYFORECAST = 20;
     private static LogAgent agent;
 
-<<<<<<< HEAD
+    private static double numPackages = 1100;
+    private static int diffFlows = 50;
 
 
-=======
     private ArrayList<Chromosome> best_population;
->>>>>>> 816dc5ad7aa02d54f08f90ff739a997fed6a9050
 
     private TextView consola;
     private String log;
@@ -325,9 +324,13 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
             System.out.println(new_list);
 //
             if(FORECASTED.get(0) != -1){
+
                 if(Math.abs(FORECASTED.get(0) - new_value) > (double)THRESHOLD /100){
-                    System.out.println("Abnormal activity");
-                    publishProgress("Abnormal Activity");
+                    if (agent.getNumPackages() > numPackages && agent.getDifFlows() > diffFlows){
+                        System.out.println("Abnormal activity");
+                        publishProgress("Abnormal Activity");
+                        showNotification();
+                    }
                 }
             }
 //            List<Double> new_list = ts;

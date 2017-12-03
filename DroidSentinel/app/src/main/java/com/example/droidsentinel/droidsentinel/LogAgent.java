@@ -24,8 +24,9 @@ public class LogAgent {
     //    private static HashMap<String, Double> petitions;
     private static double firstTime;
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSSSSSS");
-    
 
+    private static double Numpackages;
+    private static int difFlows;
 
 
 //    private static final String LOG_FILE
@@ -55,6 +56,8 @@ public class LogAgent {
         String strLine;
         double nowTimeStump = 0.0;
         int cont = 0;
+        difFlows = 0;
+        Numpackages = 0;
 
         HashMap<String, Double> petitions = new HashMap<String, Double>();
 
@@ -91,6 +94,7 @@ public class LogAgent {
                 if (nowTimeStump <= firstTime) {
                     if (!petitions.containsKey(dir_now)) {
                         petitions.put(dir_now, 1.0);
+                        difFlows++;
                     } else {
                         double num_pack = petitions.get(dir_now);
                         petitions.put(dir_now, num_pack + 1.0);
@@ -104,6 +108,7 @@ public class LogAgent {
                         maxPetitions += petitions.get(key);
                     }
 
+                    Numpackages = maxPetitions;
                     toEntropy = convertDoubles(myArray);
                     thisEntropy = calculateEntropySelf(toEntropy, maxPetitions);
 //                    thisEntropy = maxPetitions;  // En este caso, numero máximo de peticiones
@@ -147,6 +152,10 @@ public class LogAgent {
         }
         return thisEntropy;
     }
+
+    public  double getNumPackages(){return Numpackages;}
+
+    public int getDifFlows(){return difFlows;}
 
     public static double[] convertDoubles(List<Double> doubles){
 
