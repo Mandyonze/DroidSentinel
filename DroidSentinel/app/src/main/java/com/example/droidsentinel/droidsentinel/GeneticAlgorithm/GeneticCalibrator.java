@@ -9,6 +9,7 @@ import com.example.droidsentinel.droidsentinel.GeneticAlgorithm.Chromosome.Chrom
 import com.example.droidsentinel.droidsentinel.GeneticAlgorithm.Population.Population;
 import com.example.droidsentinel.droidsentinel.GeneticAlgorithm.Population.PopulationMHW;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +22,8 @@ public class GeneticCalibrator {
     public static final int NUM_INTERACCIONES = 60;
     private static List<Double> ts;
     private static final int WINDOWF = 5;
-
+    private ArrayList<Chromosome> best_population ;
+    private Boolean ok;
     //INIT
     //1.-Se crea una población incial en función del algoritmo dado---> Population init
     // WHILE: Mientras no se cumplan las condiciones de parada
@@ -32,6 +34,11 @@ public class GeneticCalibrator {
 
     public GeneticCalibrator(List<Double> timeseries){
 
+        ts = timeseries;
+    }
+
+    public GeneticCalibrator(List<Double> timeseries, boolean ok){
+        this.ok = ok;
         ts = timeseries;
     }
 
@@ -46,7 +53,10 @@ public class GeneticCalibrator {
 
         Population population = new PopulationMHW(ts, WINDOWF);
 
+
         population.generatePopulation();
+
+
         population.fitnessInitialPopulation();
 
 
@@ -59,6 +69,11 @@ public class GeneticCalibrator {
             population.fitness();
 
         }
+        
         return population.getBestParams();
+    }
+
+    public ArrayList<Chromosome> getBestPopulation(){
+        return this.best_population;
     }
 }

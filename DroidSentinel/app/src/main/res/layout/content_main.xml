@@ -12,25 +12,26 @@
     tools:showIn="@layout/app_bar_main">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:weightSum="1"
 
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:weightSum="1"-->
+
+        <!--tools:layout_editor_absoluteX="0dp"-->
+        <!--tools:layout_editor_absoluteY="0dp">-->
 
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:padding="10dp"
-            app:srcCompat="@mipmap/ic_launcher" />
+        <!--<ImageView-->
+            <!--android:id="@+id/imageView"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:padding="10dp"-->
+            <!--app:srcCompat="@mipmap/ic_launcher" />-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,31 +39,46 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-
-        <Switch
-            android:id="@+id/switch1"
+        <EditText
+            android:id="@+id/threshold"
             android:layout_width="400dp"
-            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:text="Switch"
-
-            />
-        <Switch
-            android:id="@+id/switch2"
+            android:ems="10"
+            android:hint="Umbral adaptativo"
+            android:inputType="numberSigned" />
+        <EditText
+            android:id="@+id/window_len"
             android:layout_width="400dp"
-            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:text="Switch"
+            android:ems="10"
+            android:hint="Horizonte de Predicción"
+            android:inputType="numberSigned" />
 
-            />
-        <Switch
-            android:id="@+id/switch3"
+        <EditText
+            android:id="@+id/maxts"
+            android:textSize="10dp"
             android:layout_width="400dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:text="Switch"
+            android:ems="10"
+            android:hint="Tamaño máximo"
+            android:inputType="numberSigned" />
 
-            />
+        <EditText
+            android:id="@+id/readyforescast"
+            android:layout_width="400dp"
+            android:textSize="10dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:ems="10"
+
+            android:hint="Tamaño mínimo"
+            android:inputType="numberSigned" />
+
 
     </LinearLayout>
 
@@ -97,4 +113,5 @@
             android:text="" />
 
     </ScrollView>
+
 </LinearLayout>
