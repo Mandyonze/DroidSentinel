@@ -303,4 +303,15 @@ public abstract class Population {
         return ok;
 
     }
+
+//    public ArrayList<Chromosome> getBestPopulation(){
+//        return this.best_population;
+//    }
+//
+//    public void recycledPopulation(ArrayList<Chromosome> best_population){
+//        for(int i = 0; i < best_population.size(); i++) {
+//
+//            this.initial_population.add(best_population.get(i));
+//        }
+//    }
 }

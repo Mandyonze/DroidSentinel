@@ -1,6 +1,7 @@
 package com.example.droidsentinel.droidsentinel.GeneticAlgorithm.Chromosome;
 
 import com.example.droidsentinel.droidsentinel.Algorithms.TripleExpSmoothingAdd;
+import com.example.droidsentinel.droidsentinel.Algorithms.TripleExpSmoothingMul;
 import com.example.droidsentinel.droidsentinel.ConPrediction;
 import com.example.droidsentinel.droidsentinel.GeneticAlgorithm.GeneticCalibrator;
 
@@ -37,7 +38,7 @@ public class ChromosomeMHW extends Chromosome implements Cloneable{
         List<Double> tsClone = ((List) ((ArrayList) tsCloneABS).clone());
 
         List<Double> slist = (List<Double>) tsClone.subList(0,this.data.size() - dist);
-        tsFt = TripleExpSmoothingAdd.forecast(slist, this.alpha, this.beta, this.gamma, this.period, this.dist, false);
+        tsFt = TripleExpSmoothingMul.forecast(slist, this.alpha, this.beta, this.gamma, this.period, this.dist, false);
 
         this.ChormosomeConPrediction = new ConPrediction();
         this.ChormosomeConPrediction.setIdAlgorithm("Additive Holt-Winters (triple exponential smoothing)");

@@ -12,7 +12,10 @@ DroidSentinel es una aplicación desarrollada durante el Hackathon celebrado en 
 - [Ataques de DDoS](#ataques-de-denegación-de-servicio)
 - [Requisitos](#requisitos)
 - [Instalación](#requisitos)
+- [Otros](#otros)
 - [Sobre Nosotros](#sobre-nosotros)
+
+
 
 ##  Sobre DroidSentinel
 
@@ -51,6 +54,42 @@ Para poder instalar tcpdump en nuestro emulador, debemos ejecutar los siguientes
  * ##### [Descargar Nox Emulator](https://es.bignox.com/) #####
  * ##### [Configuración Tcpdump](https://josetrochecoder.wordpress.com/2013/11/04/installing-tcpdump-for-android/) #####
  
+
+## Otros
+
+Fuentes de información:
+
+**DDoS**
+
+  *Autores:* P. Zhang, H. Wang, C. Hu, C. Lin
+
+  *Paper:* "On Denial of Service Attacks in Software Defined Networks"
+
+  *Publicación:* IEEE Network, Vol. 30 (6), pp. 28-33, December 2016
+
+**Prediction Intervals (Umbrales Adapativos)**
+
+  *Autores:* R. J. Hyndman, A. B. Koehler, J. K. Ord, R.D. Snyder
+
+  *Paper:* "Prediction intervals for exponential smoothing state space models"
+
+  *Publicación:* Journal of Forecasting, vol. 24, pp. 17-37, 2005.
+
+**Anomalías en el tráfico**
+
+  *Autores:* V. Chandola, A. Banerjee, V. Kumar
+
+  *Paper:* "Anomaly Detection: A Survey"
+
+  *Publicación:* ACM Computing Surveys vol. 41, issue 3, article no. 15, July 2009
+
+**Flash Crowd**(análisis de tráfico legítimo)
+
+  *Autores:* S. Bhatia, D. Schmidt, G. Mohay, A. Tickle
+
+  *Paper:* "A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events",
+
+  *Publicación:* Computers & Security, vol. 40, no. 1, pp. 95-107, February 2014
 
 ##  Sobre Nosotros
 

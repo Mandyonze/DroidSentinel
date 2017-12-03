@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -27,6 +28,10 @@ public class MainActivity extends AppCompatActivity
 
     public static final int NOTIFICATION_ID = 1;
 
+    EditText et1;
+    EditText et2;
+    EditText et3;
+    EditText et4;
     TextView consola;
     String log;
     Boolean ok;
@@ -44,6 +49,10 @@ public class MainActivity extends AppCompatActivity
         log = "";
         ok = false;
 
+        et1 = (EditText)findViewById(R.id.threshold);
+        et2 = (EditText)findViewById(R.id.window_len);
+        et3 = (EditText)findViewById(R.id.maxts);
+        et4 = (EditText)findViewById(R.id.readyforescast);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -60,8 +69,30 @@ public class MainActivity extends AppCompatActivity
         if (!ok) ok = true;
         else ok = false;
 
+
+        int threshold = 0;
+        int window_len = 0;
+        int maxts = 0;
+        int readyforescast = 0;
+
+        if (et1.getText().toString().matches("")) {
+            threshold = 20;
+        } else threshold = Integer.valueOf(et1.getText().toString());
+        if (et2.getText().toString().matches("")) {
+            window_len = 5;
+        } else window_len = Integer.valueOf(et2.getText().toString());
+        if (et3.getText().toString().matches("")) {
+            maxts = 52 ;
+        } else maxts = Integer.valueOf(et3.getText().toString());
+        if (et4.getText().toString().matches("")) {
+            readyforescast = 20;
+        } else  readyforescast =  Integer.valueOf(et4.getText().toString());
+
+
+        consola.setText(threshold + "," + window_len + "," + maxts + "," + readyforescast);
+
         if (ok) {
-            logTask = new LogTask(this,consola,log);
+            logTask = new LogTask(this,consola,log,threshold,window_len,maxts,readyforescast);
             logTask.execute();
         } else logTask.cancel(true);
 

@@ -14,6 +14,8 @@ import com.example.droidsentinel.droidsentinel.Algorithms.DoubleMovingAverage;
 import com.example.droidsentinel.droidsentinel.Algorithms.TripleExpSmoothingAdd;
 import com.example.droidsentinel.droidsentinel.Algorithms.TripleExpSmoothingMul;
 import com.example.droidsentinel.droidsentinel.Algorithms.WeightedMovingAverage;
+import com.example.droidsentinel.droidsentinel.GeneticAlgorithm.Chromosome.Chromosome;
+import com.example.droidsentinel.droidsentinel.GeneticAlgorithm.GeneticCalibrator;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -35,15 +37,19 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 public class LogTask extends AsyncTask<Void, String, Boolean> {
 
     private static List<Double> ts;
-    private static final int THRESHOLD = 20;
+    private int THRESHOLD = 20;
     private static List<Double> FORECASTED;
     private static int WINDOW_LEN;
-    private static final int MAXTS = 52;
-    private static final int READYFORECAST = 20;
+    private int MAXTS = 52;
+    private int READYFORECAST = 20;
     private static LogAgent agent;
 
+<<<<<<< HEAD
 
 
+=======
+    private ArrayList<Chromosome> best_population;
+>>>>>>> 816dc5ad7aa02d54f08f90ff739a997fed6a9050
 
     private TextView consola;
     private String log;
@@ -55,13 +61,15 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
     //Ruta donde guardamos el archivo
     public final static String RUTA = "/sdcard/tcpdump.log";
 
-    public LogTask(Context contexto, TextView consola, String log) {
+    public LogTask(Context contexto, TextView consola, String log, int threshold, int window_len,int maxts,int readyforescast) {
         super();
         this.consola = consola;
         this.log = log;
         this.contexto = contexto;
-
-
+        this.THRESHOLD = threshold;
+        this.WINDOW_LEN = window_len;
+        this.MAXTS = maxts;
+        this.READYFORECAST = readyforescast;
     }
 
 
@@ -75,6 +83,8 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... voids) {
+
+        //publishProgress("-->[" + this.THRESHOLD + "," + this.WINDOW_LEN+ "," + this.MAXTS+ "," + this.READYFORECAST + "]");
 
         publishProgress(start());
 
@@ -330,237 +340,47 @@ public class LogTask extends AsyncTask<Void, String, Boolean> {
         return new_value;
     }
 
-    public static List<Double> calculateMHW(){
+    public List<Double> HoltWintersMul(){
+
         List<Double> tsCloneABS = ((List) ((ArrayList) ts).clone());
         List<Double> tsFt = new ArrayList();
         List<Double> tsClone = ((List) ((ArrayList) tsCloneABS).clone());
-        //Add as many coeficients as needed
-        List<Double> alphaAHTES = new ArrayList();
-        for(int i=0;i<9;i=i+2) alphaAHTES.add(0.1*(i+1));
 
-        List<Double> betaAHTES = new ArrayList();
-        for(int i=0;i<9;i=i+2) betaAHTES.add(0.1*(i+1));
 
-        List<Double> gammaAHTES = new ArrayList();
-        for(int i=0;i<9;i=i+2) gammaAHTES.add(0.1*(i+1));
+        //if (this.best_population == null) {
+        GeneticCalibrator calibrator = calibrator = new GeneticCalibrator(ts);
+        //} else calibrator = new GeneticCalibrator(ts,true);
 
-        List<ConPrediction> AlgTests1 = new ArrayList();
-        Iterator it = alphaAHTES.iterator();
+
+        Chromosome chro = calibrator.calibrate();
+        List<ConPrediction> AlgTests2 = new ArrayList();
+
+        //this.best_population = calibrator.getBestPopulation();
+
+        double aCoef = chro.getValueAttibute(0);
+        double bCoef = chro.getValueAttibute(1);
+        double gCoef = chro.getValueAttibute(2);
 
         List<Double> slist = (List<Double>) tsClone.subList(0,ts.size() - WINDOW_LEN);
-        tsFt= TripleExpSmoothingAdd.forecast(slist, 0.7, 0.7, 0.7, WINDOW_LEN, WINDOW_LEN, false);
-        ConPrediction auxCon = new ConPrediction();
-        auxCon.setIdAlgorithm("Additive Holt-Winters (triple exponential smoothing)");
-        auxCon.algParams.put("period",(double)WINDOW_LEN);
-        auxCon.setTs(ts);
-        auxCon.setFt(((List) ((ArrayList) tsFt).clone()));
-        //auxCon.calculateErrors();
-        //auxCon.calculateMAWeightedError(dist);  //change formula
-        //auxCon.calculateSMAPESmoothing(dist,period);
-        //auxCon.calculateSMAPE();
-        //auxCon.smape = auxCon.getAvgSmapeLastN(WINDOW_LEN);
-        //AlgTests1.add(auxCon);
+        tsFt= TripleExpSmoothingMul.forecast(slist, aCoef, bCoef, gCoef, WINDOW_LEN, WINDOW_LEN, false);
 
+        ConPrediction auxCon2 = new ConPrediction();
+        auxCon2.setIdAlgorithm("Multiplicative Holt-Winters (triple exponential smoothing)");
+        auxCon2.algParams.put("alpha",aCoef);
+        auxCon2.algParams.put("beta",bCoef);
+        auxCon2.algParams.put("gamma",gCoef);
+        auxCon2.algParams.put("period",(double)WINDOW_LEN);
+        auxCon2.setTs(ts);
+        auxCon2.setFt(((List) ((ArrayList) tsFt).clone()));
+        auxCon2.calculateSMAPE();
+        auxCon2.smape = auxCon2.getAvgSmapeLastN(WINDOW_LEN);
+        AlgTests2.add(auxCon2);
 
-        /*while(it.hasNext()){
-            double al = (Double) it.next();
-            Iterator itBett = betaAHTES.iterator();
-            while(itBett.hasNext()){
-                double be = (Double) itBett.next();
-                Iterator itGamt = gammaAHTES.iterator();
-                while(itGamt.hasNext()){
-                    double ga = (Double) itGamt.next();
-                    List<Double> slist = (List<Double>) tsClone.subList(0,ts.size() - WINDOW_LEN);
-                    tsFt= TripleExpSmoothingAdd.forecast(slist, al, be, ga, WINDOW_LEN, WINDOW_LEN, false);
-                    ConPrediction auxCon = new ConPrediction();
-                    auxCon.setIdAlgorithm("Additive Holt-Winters (triple exponential smoothing)");
-                    auxCon.algParams.put("alpha",al);
-                    auxCon.algParams.put("beta",be);
-                    auxCon.algParams.put("gamma",ga);
-                    auxCon.algParams.put("period",(double)WINDOW_LEN);
-                    auxCon.setTs(ts);
-                    auxCon.setFt(((List) ((ArrayList) tsFt).clone()));
-                    //auxCon.calculateErrors();
-                    //auxCon.calculateMAWeightedError(dist);  //change formula
-                    //auxCon.calculateSMAPESmoothing(dist,period);
-                    auxCon.calculateSMAPE();
-                    auxCon.smape = auxCon.getAvgSmapeLastN(WINDOW_LEN);
-                    AlgTests1.add(auxCon);
-                }
-            }
-        }*/
-        //this.TSAllPredictions.put("Additive Holt-Winters (triple exponential smoothing)", AlgTests1);
-        ConPrediction bestConPred1 = new ConPrediction();
-        bestConPred1 = getBestPredAlg(AlgTests1);
-
+        //tsCloneABS = ((List) ((ArrayList) ts).clone());
         return tsFt;
     }
 
-    public static List<Double> HoltWintersMul(){
 
-        List<Double> tsCloneABS = ((List) ((ArrayList) ts).clone());
-        List<Double> tsFt = new ArrayList();
-        List<Double> tsClone = ((List) ((ArrayList) tsCloneABS).clone());
-
-        //Add as many coeficients as needed
-        List<Double> alphaHTES = new ArrayList();
-        for(int i=0;i<9;i=i+2) alphaHTES.add(0.1*(i+1));
-
-        List<Double> betaHTES = new ArrayList();
-        for(int i=0;i<9;i=i+2) betaHTES.add(0.1*(i+1));
-
-        List<Double> gammaHTES = new ArrayList();
-        for(int i=0;i<9;i=i+2) gammaHTES.add(0.1*(i+1));
-
-        List<ConPrediction> AlgTests2 = new ArrayList();
-        Iterator itAlpht = alphaHTES.iterator();
-
-        while(itAlpht.hasNext()){
-            double aCoef = (Double) itAlpht.next();
-            Iterator itBett = betaHTES.iterator();
-            while(itBett.hasNext()){
-                double bCoef = (Double) itBett.next();
-                Iterator itGamt = gammaHTES.iterator();
-                while(itGamt.hasNext()){
-                    double gCoef = (Double) itGamt.next();
-                    List<Double> slist = (List<Double>) tsClone.subList(0,ts.size() - WINDOW_LEN);
-                    tsFt= TripleExpSmoothingMul.forecast(slist, aCoef, bCoef, gCoef, WINDOW_LEN, WINDOW_LEN, false);
-
-                    ConPrediction auxCon2 = new ConPrediction();
-                    auxCon2.setIdAlgorithm("Multiplicative Holt-Winters (triple exponential smoothing)");
-                    auxCon2.algParams.put("alpha",aCoef);
-                    auxCon2.algParams.put("beta",bCoef);
-                    auxCon2.algParams.put("gamma",gCoef);
-                    auxCon2.algParams.put("period",(double)WINDOW_LEN);
-                    auxCon2.setTs(ts);
-                    auxCon2.setFt(((List) ((ArrayList) tsFt).clone()));
-                    //auxCon2.calculateErrors();
-                    //auxCon2.calculateMAWeightedError(dist);  //change formula
-                    //auxCon2.calculateSMAPESmoothing(dist,period);
-                    auxCon2.calculateSMAPE();
-                    auxCon2.smape = auxCon2.getAvgSmapeLastN(WINDOW_LEN);
-                    AlgTests2.add(auxCon2);
-                }
-            }
-        }
-        //this.TSAllPredictions.put("Multiplicative Holt-Winters (triple exponential smoothing)", AlgTests2);
-        ConPrediction bestConPred2 = new ConPrediction();
-        bestConPred2 = getBestPredAlg(AlgTests2);
-        System.out.println("El SMAPE es: " + bestConPred2.smape);
-
-        tsCloneABS = ((List) ((ArrayList) ts).clone());
-        return TripleExpSmoothingMul.forecast(tsCloneABS, bestConPred2.algParams.get("alpha"),
-                bestConPred2.algParams.get("beta"), bestConPred2.algParams.get("gamma"), WINDOW_LEN, WINDOW_LEN, false);
-    }
-
-    public static List<Double> DoubleMovingAVG(){
-
-        List<Double> tsCloneABS = ((List) ((ArrayList) ts).clone());
-        List<Double> tsFt = new ArrayList();
-        List<Double> tsClone = ((List) ((ArrayList) tsCloneABS).clone());
-
-        int [] lagSizeDMA = new int[9];
-        int dmaLength = tsClone.size();
-        double lagDMA;
-        for(int i=0;i<9;i++){
-            lagDMA = dmaLength*0.1*(i+1);
-            lagSizeDMA[i]= (int) lagDMA;
-        }
-        List<ConPrediction> AlgTests9 = new ArrayList();
-
-        for(int i=0;i<5;i++){
-            DoubleMovingAverage auxDSMA= new DoubleMovingAverage(lagSizeDMA[i]);
-            List<Double> slist = (List<Double>) tsClone.subList(0,ts.size() - WINDOW_LEN);
-            tsFt = auxDSMA.getAllPredictions(slist,WINDOW_LEN);
-
-            ConPrediction auxCon9 = new ConPrediction();
-            auxCon9.setIdAlgorithm("Double Moving Average");
-            auxCon9.algParams.put("lag",(double) lagSizeDMA[i]);
-            auxCon9.setTs(ts);
-            auxCon9.setFt(((List) ((ArrayList) tsFt).clone()));
-            //auxCon9.calculateErrors();
-            //auxCon9.calculateMAWeightedError(dist);
-            auxCon9.calculateSMAPE();
-            auxCon9.smape = auxCon9.getAvgSmapeLastN(WINDOW_LEN);
-            AlgTests9.add(auxCon9);
-        }
-        //this.TSAllPredictions.put("Double Moving Average", AlgTests9);
-        ConPrediction bestConPred9 = new ConPrediction();
-        bestConPred9 = getBestPredAlg(AlgTests9);
-
-        return bestConPred9.ts;
-    }
-
-    public static List<Double> WeigthedMovingAVG(){
-
-        List<Double> tsCloneABS = ((List) ((ArrayList) ts).clone());
-        List<Double> tsFt = new ArrayList();
-        List<Double> tsClone = ((List) ((ArrayList) tsCloneABS).clone());
-
-        WeightedMovingAverage auxWMA= new WeightedMovingAverage();
-
-        List<Double> slistWMA = (List<Double>) tsClone.subList(0,ts.size() - WINDOW_LEN);
-        tsFt = auxWMA.getAllPredictions(slistWMA,WINDOW_LEN);
-
-        ConPrediction auxCon7 = new ConPrediction();
-        auxCon7.setIdAlgorithm("Weighted Moving Average");
-        auxCon7.setTs(ts);
-        auxCon7.setFt(((List) ((ArrayList) tsFt).clone()));
-        //auxCon7.calculateErrors();
-        //auxCon7.calculateMAWeightedError(dist);
-        auxCon7.calculateSMAPE();
-        auxCon7.smape = auxCon7.getAvgSmapeLastN(WINDOW_LEN);
-        List<ConPrediction> AlgTests7 = new ArrayList();
-        AlgTests7.add(auxCon7);
-
-        return tsFt;
-    }
-
-    public static List<Double> calculateArima(){
-
-        int p = 1;
-        int d = 0;
-        int q = 0;
-        //List<Double> tsFtAux = new ArrayList();
-
-        List<Double> tsFt = new ArrayList();
-        List<Double> tsClone = ((List) ((ArrayList) ts).clone());
-        List<ConPrediction> AlgTests5 = new ArrayList();
-
-        for(int i=0;i<2; i++){
-
-            //List<Double> tsFtAux = new ArrayList();
-            List<Double> slistARIMA = (List<Double>) tsClone.subList(0,ts.size() - WINDOW_LEN);
-            p = i +1;
-            d = i;
-            q = i +2;
-            ARIMA auxARIMA = new ARIMA(slistARIMA,p,d,q);
-
-            tsFt = auxARIMA.getAllPredictions(WINDOW_LEN);
-
-            ConPrediction auxCon5 = new ConPrediction();
-            auxCon5.setIdAlgorithm("ARIMA");
-            auxCon5.algParams.put("p", (double) p);
-            auxCon5.algParams.put("d", (double) d);
-            auxCon5.algParams.put("q", (double) q);
-
-            auxCon5.setTs(ts);
-            auxCon5.setFt(((List) ((ArrayList) tsFt).clone()));
-            //auxCon5.calculateErrors();
-            //auxCon5.calculateMAWeightedError(dist);  //change formula
-
-            auxCon5.calculateSMAPE();
-            auxCon5.smape = auxCon5.getAvgSmapeLastN(WINDOW_LEN);
-            //System.out.println("8888888888888888888888888888888888");
-            //System.out.println(auxCon5.getSmape());
-            //System.out.println("8888888888888888888888888888888888");
-            AlgTests5.add(auxCon5);
-        }
-        ConPrediction bestConPred5 = new ConPrediction();
-        bestConPred5 = getBestPredAlg(AlgTests5);
-//        System.out.println("El SMAPE es: " + bestConPred5.smape);
-        return bestConPred5.getFt();
-    }
 
     public static ConPrediction getBestPredAlg(List<ConPrediction> AlgTests){
         double min_smape = Double.MAX_VALUE;
