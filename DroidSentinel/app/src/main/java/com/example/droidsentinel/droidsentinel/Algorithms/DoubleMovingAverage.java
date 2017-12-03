@@ -17,6 +17,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+/**
+ * Este artículo sigue la descripción publicada por P.G. Mulloy,
+ * en el paper "Smoothing Data with Faster Moving Averages",
+ * publicado en la revista International Journal of Forecasting, Vol. 22, Issue 4, pp. 637-666, December 2006
+ */
 public class DoubleMovingAverage {
     Queue<Double> window = new LinkedList<Double>();
     private final int period; //Sliding window
