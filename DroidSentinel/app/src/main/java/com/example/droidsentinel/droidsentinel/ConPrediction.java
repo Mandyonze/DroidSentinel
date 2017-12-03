@@ -235,7 +235,11 @@ public class ConPrediction {
         writer.close();
 
     }//writePrediction
-
+    /**
+      S. Makridakis, M. Hibon, "The M3-Competition: results, conclusions and implications",
+      International Journal of Forecasting, Vol. 16, Issue 4, pp. 45
+     */
+    
     //public List<Double> calculateSMAPE(){
     public void calculateSMAPE(){
         //Symetric mean absolite percentage error
