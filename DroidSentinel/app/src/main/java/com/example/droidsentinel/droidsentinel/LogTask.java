@@ -33,7 +33,16 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 /**
  * Created by blorenzo on 21/11/2017.
  */
+/**
+ Los Algoritmos Genéticos son métodos adaptativos que pueden usarse para resolver proble- mas de búsqueda y optimización.
+ Están basados en el proceso genético de los organismos vivos.
 
+ Referencias:
+
+  Este artículo sigue la descripción publicada por A. Kamrani, W. Rong, R. Gonzalez,
+  en el paper "A genetic algorithm methodology for data mining and intelligent knowledge acquisition",
+  publicado en la revista Computers & Industrial Engineering, Vol. 40(4), pp. 361-377, 2001
+ */
 public class LogTask extends AsyncTask<Void, String, Boolean> {
 
     private static List<Double> ts;
