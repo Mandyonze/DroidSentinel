@@ -1,5 +1,6 @@
 <a name="top"></a>
-<a><img src="https://img.shields.io/badge/build-progress-blue.svg" alt="DroidSentinel-Return0;"></a><br>
+<a href="https://github.com/borjalor/DroidSentinel"><img src="https://img.shields.io/badge/build-progress-blue.svg" alt="DroidSentinel-Return0;"></a><br>
+<a href="https://github.com/borjalor/DroidSentinel/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-GPL3-blue.svg" alt="License"></a><br>
 
 # Return0 - DroidSentinel
 
