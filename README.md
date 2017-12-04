@@ -1,6 +1,6 @@
 <a name="top"></a>
 
-<a href="https://github.com/borjalor/DroidSentinel"><img src="https://img.shields.io/badge/build-progress-blue.svg" alt="DroidSentinel-Progress"></a><a href="https://github.com/borjalor/DroidSentinel/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-GPL3-blue.svg" alt="Twitter" align="left"></a><br>
+<a href="https://github.com/borjalor/DroidSentinel"><img src="https://img.shields.io/badge/build-progress-blue.svg" alt="DroidSentinel-Progress"></a><a href="https://github.com/borjalor/DroidSentinel/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-GPL3-brightgreen.svg" alt="Twitter" align="left"></a><br>
 
 # Return0 - DroidSentinel
 
