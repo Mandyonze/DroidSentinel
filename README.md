@@ -56,7 +56,23 @@ Para poder instalar tcpdump en nuestro emulador, debemos ejecutar los siguientes
  * ##### [Descargar Nox Emulator](https://es.bignox.com/) #####
  * ##### [Configuración Tcpdump](https://josetrochecoder.wordpress.com/2013/11/04/installing-tcpdump-for-android/) #####
  
-
+ ## Banco de pruebas
+ 
+ Los tests realizados se han llevado a cabo con distintos Scrappers para la generación de tráfico, utilizando uno realizado por nosotros y algunos por usuarios de github. A continuación adjuntamos los usuarios con los distintos scripts.
+ 
+ Legítimos:
+ 
+ * ##### [Borjalor - Trafficgenerator](https://github.com/borjalor/TrafficGenerator) #####
+ * ##### [gehaxelt - Python TrafficGenerator](https://github.com/gehaxelt/python-trafficgenerator) #####
+ * ##### [BeforeRain - TestBed using ansible](https://github.com/BeforeRain/TrafficGenerator-ansible) #####
+ 
+ Ataques DDoS:
+ 
+ * ##### [Souhardya - Warchild (TCP SYN Flood, UDP SYN Flood)](https://github.com/Souhardya/WarChild) ####
+ * ##### [houssniyh - TCP Attack](https://github.com/houssniyh/Slowloris-DOS-Attack) ####
+ 
+ Para llevar a cabo la fase de pruebas de nuestra aplicación, utilizamos un total de 30 usuarios con sus respectivos dispositivos.
+ 
 ## Otros
 
 Fuentes de información:
