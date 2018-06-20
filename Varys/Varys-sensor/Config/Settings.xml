@@ -1,0 +1,10 @@
+<Varys>    
+	<Config>
+		<maxPackets>-1</maxPackets><!-- Stop condition (-1 for infinite loop) -->
+		<granularity>350000</granularity><!-- millisecs per file,  60000= 1 minute -->
+										<!-- this settings determines when a group of packets is permanent stored -->
+										<!-- noting to do with the TS generation. -->
+		<display>true</display><!-- display in console gathered traffic? -->
+		<filter>ip</filter><!-- Berkeley_Packet_Filter filter (as string) -->
+	</Config>
+</Varys>

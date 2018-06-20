@@ -1,0 +1,62 @@
+java.runtime.name: Java(TM) SE Runtime Environment
+sun.boot.library.path: C:\Program Files\Java\jdk1.8.0_144\jre\bin
+java.vm.version: 25.144-b01
+user.country.format: US
+java.vm.vendor: Oracle Corporation
+java.vendor.url: http://java.oracle.com/
+path.separator: ;
+java.vm.name: Java HotSpot(TM) 64-Bit Server VM
+file.encoding.pkg: sun.io
+user.country: ES
+user.script: 
+sun.java.launcher: SUN_STANDARD
+sun.os.patch.level: 
+java.vm.specification.name: Java Virtual Machine Specification
+user.dir: C:\Users\Alkahest\Desktop\NetBeansProjects\Varys-dev\Varys
+java.runtime.version: 1.8.0_144-b01
+java.awt.graphicsenv: sun.awt.Win32GraphicsEnvironment
+java.endorsed.dirs: C:\Program Files\Java\jdk1.8.0_144\jre\lib\endorsed
+os.arch: amd64
+java.io.tmpdir: C:\Users\Alkahest\AppData\Local\Temp\
+line.separator: 
+
+java.vm.specification.vendor: Oracle Corporation
+user.variant: 
+os.name: Windows 10
+sun.jnu.encoding: Cp1252
+java.library.path: C:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\MiKTeX 2.9\miktex\bin\x64\;C:\Program Files\MATLAB\R2014a\runtime\win64;C:\Program Files\MATLAB\R2014a\bin;C:\Program Files\MATLAB\R2014a\polyspace\bin;C:\Strawberry\c\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\Alkahest\AppData\Local\Microsoft\WindowsApps;.
+java.specification.name: Java Platform API Specification
+java.class.version: 52.0
+sun.management.compiler: HotSpot 64-Bit Tiered Compilers
+os.version: 10.0
+user.home: C:\Users\Alkahest
+user.timezone: Europe/Paris
+java.awt.printerjob: sun.awt.windows.WPrinterJob
+file.encoding: Cp1252
+java.specification.version: 1.8
+java.class.path: C:\Users\Alkahest\Desktop\NetBeansProjects\Varys-dev\Varys\target\classes;C:\Users\Alkahest\.m2\repository\org\pcap4j\pcap4j-core\1.7.3\pcap4j-core-1.7.3.jar;C:\Users\Alkahest\.m2\repository\net\java\dev\jna\jna\4.2.1\jna-4.2.1.jar;C:\Users\Alkahest\.m2\repository\org\slf4j\slf4j-api\1.7.12\slf4j-api-1.7.12.jar
+user.name: Alkahest
+java.vm.specification.version: 1.8
+sun.java.command: Init
+java.home: C:\Program Files\Java\jdk1.8.0_144\jre
+sun.arch.data.model: 64
+user.language: es
+java.specification.vendor: Oracle Corporation
+user.language.format: en
+awt.toolkit: sun.awt.windows.WToolkit
+java.vm.info: mixed mode
+java.version: 1.8.0_144
+java.ext.dirs: C:\Program Files\Java\jdk1.8.0_144\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext
+sun.boot.class.path: C:\Program Files\Java\jdk1.8.0_144\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_144\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_144\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_144\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_144\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_144\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_144\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_144\jre\classes
+java.vendor: Oracle Corporation
+file.separator: \
+java.vendor.url.bug: http://bugreport.sun.com/bugreport/
+sun.io.unicode.encoding: UnicodeLittle
+sun.cpu.endian: little
+sun.desktop: windows
+sun.cpu.isalist: amd64
+
+Init: 2018-03-26_16.30.08
+Max. Paquets: -1
+
+Observations:Added new observation at 2018-03-26_16.30.13
