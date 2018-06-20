@@ -14,6 +14,7 @@ DroidSentinel es una aplicación desarrollada durante el Hackathon celebrado en 
 - [Ataques de DDoS](#ataques-de-denegación-de-servicio)
 - [Requisitos](#requisitos)
 - [Instalación](#requisitos)
+- [ADF y scripts](#ADF-y-otros-scripts-útiles)
 - [Otros](#otros)
 - [Sobre Nosotros](#sobre-nosotros)
 
@@ -72,6 +73,10 @@ Para poder instalar tcpdump en nuestro emulador, debemos ejecutar los siguientes
  * ##### [houssniyh - TCP Attack](https://github.com/houssniyh/Slowloris-DOS-Attack) ####
  
  Para llevar a cabo la fase de pruebas de nuestra aplicación, utilizamos un total de 30 usuarios con sus respectivos dispositivos.
+ 
+## ADF y otros scripts útiles
+
+Los scripts utilizados para agrupar y modelar las series temporales así como para calcular el ADF de cada una de ellas, se pueden encontrar [aquí](https://github.com/AndresHG/TimeSeries-Spliter).
  
 ## Otros
 
