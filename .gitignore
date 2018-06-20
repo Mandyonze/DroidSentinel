@@ -10,3 +10,5 @@ DroidSentinel/app/build/
 /DroidSentinel/.externalNativeBuild
 .DS_Store
 /DroidSentinel/app/build/*
+/Varys/Varys-DatasetGenerator/target/*
+/Varys/Varys-sensor/Varys/target/*
