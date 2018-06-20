@@ -14,7 +14,8 @@ DroidSentinel es una aplicación desarrollada durante el Hackathon celebrado en 
 - [Ataques de DDoS](#ataques-de-denegación-de-servicio)
 - [Requisitos](#requisitos)
 - [Instalación](#requisitos)
-- [ADF y scripts](#ADF-y-otros-scripts-útiles)
+- [Banco de pruebas](#banco-de-pruebas)
+- [ADF y scripts](#adf-y-otros-scripts-útiles)
 - [Otros](#otros)
 - [Sobre Nosotros](#sobre-nosotros)
 
